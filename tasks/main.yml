@@ -13,4 +13,5 @@
 - name: Set SELinux in permissive mode until the machine is rebooted
   shell: setenforce 0
   sudo: yes
+  ignore_errors: True
 
