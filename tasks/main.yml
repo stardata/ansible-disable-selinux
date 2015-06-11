@@ -1,2 +1,16 @@
 ---
-# tasks file for ansible-disable-selinux
+# tasks for ansible-disable-selinux
+- name: Install libselinux as prereq for selinux ansible module
+  yum:
+    pkg=libselinux-python
+    state=present
+  sudo: yes
+
+- name: Disable SELinux at next reboot
+  selinux: state=disabled
+  sudo: yes
+
+- name: Set SELinux in permissive mode until the machine is rebooted
+  shell: setenforce 0
+  sudo: yes
+
