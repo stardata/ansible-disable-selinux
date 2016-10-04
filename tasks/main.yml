@@ -2,7 +2,7 @@
 # tasks for ansible-disable-selinux
 - name: Install libselinux as prereq for selinux ansible module
   yum:
-    pkg=libselinux-python
+    name=libselinux-python
     state=present
   sudo: yes
 
@@ -14,4 +14,3 @@
   shell: setenforce 0
   sudo: yes
   ignore_errors: True
-
